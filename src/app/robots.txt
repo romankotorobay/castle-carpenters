@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://novanest-interiors.com/sitemap.xml
