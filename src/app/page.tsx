@@ -105,6 +105,7 @@ export default function Home() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   // Parallax Hero Effect
   const { scrollY } = useScroll();
@@ -118,13 +119,25 @@ export default function Home() {
     });
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email) return;
-    
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+      const data = (await response.json().catch(() => null)) as { error?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(data?.error || "We could not send your message. Please try again.");
+      }
+
       setIsSubmitted(true);
       setFormState({
         name: "",
@@ -132,7 +145,15 @@ export default function Home() {
         phone: "",
         message: ""
       });
-    }, 1500);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "We could not send your message. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const nextTestimonial = () => {
@@ -558,6 +579,12 @@ export default function Home() {
                         className="border-b border-brand-secondary/35 focus:border-brand-primary outline-none py-2 text-sm font-sans placeholder:text-brand-accent/40 resize-none"
                       />
                     </div>
+
+                    {submitError ? (
+                      <p role="alert" className="font-sans text-sm text-brand-primary">
+                        {submitError}
+                      </p>
+                    ) : null}
 
                     <button
                       type="submit"
