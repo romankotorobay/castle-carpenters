@@ -26,10 +26,8 @@ import {
 
 import Navbar from "@/components/Navbar";
 import LoadingScreen from "@/components/LoadingScreen";
-import Stats from "@/components/Stats";
 import ProjectCard, { Project } from "@/components/ProjectCard";
 import BackToTop from "@/components/BackToTop";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Projects Data
 const projects: Project[] = [
@@ -56,66 +54,40 @@ const projects: Project[] = [
 // Services Data
 const services = [
   {
-    icon: Compass,
-    title: "Interior Design",
-    description: "Bespoke residential & commercial planning tailored to custom spatial aesthetics."
-  },
-  {
-    icon: Layers,
-    title: "Architecture",
-    description: "Structural design from conceptual blueprint drafts to full execution supervision."
-  },
-  {
-    icon: Maximize,
-    title: "Space Planning",
-    description: "Optimizing flow, function, and comfort to elevate your everyday environment."
-  },
-  {
     icon: Sparkles,
-    title: "Furniture Design",
-    description: "Custom-curated material sourcing and design of tailored furniture units."
+    title: "Remodeling",
+    description: "Enhancing your home with up-to-date asthetics and craftsmanship."
   },
   {
     icon: Hammer,
     title: "Renovation",
-    description: "Transformative retrofits honoring historic frameworks with modern conveniences."
+    description: "Ensuring your home is structurally safe & sound with expert knowledge."
   },
   {
-    icon: Award,
-    title: "Landscape Design",
-    description: "Fluid indoor-outdoor landscaping blueprints that sync natural surroundings."
+    icon: Layers,
+    title: "Finish Work",
+    description: "Increasing the livability of your home via basement finishes and deck building."
   },
   {
-    icon: Eye,
-    title: "3D Visualization",
-    description: "Immersive photorealistic renders providing high-fidelity digital walkthroughs."
+    icon: Sparkles,
+    title: "Small Repairs",
+    description: "Providing handyman services for smaller scaled jobs."
   },
-  {
-    icon: CheckCircle2,
-    title: "Turnkey Projects",
-    description: "Full end-to-end design, construction coordination, and final staging handover."
-  }
 ];
 
 // Testimonials Data
 const testimonials = [
   {
-    name: "Charlotte & Pierre V.",
-    project: "Beverly Hills Villa",
-    rating: 5,
-    quote: "NovaNest turned our house into a work of art. The layout maximizes natural light, and the custom furniture pieces are breathtaking. Their design workflow was professional and impeccable."
+    name: "John Doe",
+    quote: "quote"
   },
   {
-    name: "Alexander Mercer",
-    project: "Mercer Corporate Office",
-    rating: 5,
-    quote: "The biophilic layout of our London head office has transformed our daily work culture. Clients are constantly commenting on the sleek concrete and lush greenery balances. A masterclass in workplace architecture."
+    name: "Jane Doe",
+    quote: "quote"
   },
   {
-    name: "Celine Dumont",
-    project: "Dumont Cafe & Lounge",
-    rating: 5,
-    quote: "An extraordinary Scandinavian cafe setup. The light oak joinery, natural flow, and cozy lighting create the exact warm aesthetic we wanted. They delivered ahead of schedule!"
+    name: "Billy Kid",
+    quote: "quote"
   }
 ];
 
@@ -128,16 +100,11 @@ export default function Home() {
     name: "",
     email: "",
     phone: "",
-    projectType: "",
-    budget: "",
     message: ""
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Newsletter State
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   // Parallax Hero Effect
   const { scrollY } = useScroll();
@@ -153,7 +120,7 @@ export default function Home() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formState.name || !formState.email || !formState.projectType) return;
+    if (!formState.name || !formState.email) return;
     
     setIsSubmitting(true);
     setTimeout(() => {
@@ -163,22 +130,9 @@ export default function Home() {
         name: "",
         email: "",
         phone: "",
-        projectType: "",
-        budget: "",
         message: ""
       });
     }, 1500);
-  };
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail) return;
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setNewsletterSubmitted(true);
-      setNewsletterEmail("");
-    }, 1200);
   };
 
   const nextTestimonial = () => {
@@ -230,7 +184,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="font-sans text-[11px] sm:text-xs tracking-[0.4em] uppercase text-brand-secondary font-semibold mb-6"
             >
-              Exquisite Interiors & Architecture
+              High-Quality Carpentry & Remodeling Services
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
@@ -238,6 +192,7 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="font-serif text-4xl sm:text-6xl md:text-7xl font-light leading-[1.1] mb-8"
             >
+              {/*change this */}
               Design Spaces That Inspire Everyday Living
             </motion.h1>
             
@@ -251,14 +206,14 @@ export default function Home() {
                 href="#projects"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-primary text-brand-bg px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-brand-secondary hover:text-brand-dark transition-all duration-300 rounded-sm"
               >
-                View Portfolio
+                View Projects
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="#consultation"
                 className="w-full sm:w-auto inline-flex items-center justify-center bg-transparent border border-brand-bg/40 text-brand-bg px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-brand-bg hover:text-brand-dark hover:border-brand-bg transition-all duration-300 rounded-sm"
               >
-                Book Consultation
+                Contact Us
               </a>
             </motion.div>
           </div>
@@ -274,88 +229,34 @@ export default function Home() {
             <div className="lg:col-span-7 space-y-12">
               <div className="space-y-4">
                 <p className="font-sans text-xs tracking-[0.3em] uppercase text-brand-primary font-semibold">
-                  About NovaNest
+                  About Castle Carpenters
                 </p>
                 <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-light leading-tight text-brand-dark">
-                  Designing Spaces That Echo Quiet Luxury
+                  Carpentry & Remodeling Services - Fortify Your Home
                 </h2>
               </div>
 
               <div className="space-y-6 text-brand-accent font-sans text-sm md:text-base leading-relaxed max-w-2xl">
                 <p>
-                  Founded on the principles of spatial harmony, magazine-grade layouts, and organic materials, NovaNest Interiors constructs high-end residential and commercial estates. We strike a fine equilibrium between the architectural raw forms of Scandinavian minimalism and the eclectic texture layering of modern luxury design.
+                  Your home is your kingdom, don't let it fall into ruin. Small problems can quickly add up to expensive repairs if they aren't addressed. 
+                  Allow us to service your home to save you from those costly repairs down the line. We offer top to bottom service and maintenance...
                 </p>
                 <p>
-                  Our mission is simple: to carve functional, highly personalized environments that inspire daily ritual. We focus on the tiny margins—the direction of ambient shadows, the joinery of customized cabinetry, and the tactility of European stones.
+                  Serving the Western Massachusetts area, Castle Carpenters takes pride in providing high quality results.
                 </p>
               </div>
 
-              {/* Mission / Philosophy Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+              {/* commitment statement */}
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 pt-4">
                 <div className="space-y-2 border-l border-brand-secondary/40 pl-6">
-                  <h4 className="font-serif text-lg text-brand-dark">Our Philosophy</h4>
+                  <h4 className="font-serif text-lg text-brand-dark">Our Commitment to You</h4>
                   <p className="font-sans text-xs sm:text-sm text-brand-accent leading-relaxed">
-                    Spaces must serve the inhabitant, utilizing raw textures, natural light routes, and high-quality bespoke components.
-                  </p>
-                </div>
-                <div className="space-y-2 border-l border-brand-secondary/40 pl-6">
-                  <h4 className="font-serif text-lg text-brand-dark">Our Commitment</h4>
-                  <p className="font-sans text-xs sm:text-sm text-brand-accent leading-relaxed">
-                    Uncompromised execution, clear cost structures, and rigorous project schedules from draft to keys handover.
+                    At Castle Carpenters, we take the utmost pride in our work. We ensure that each job is completed to your specifications while
+                    maintaining clear communication throughout the project.
                   </p>
                 </div>
               </div>
             </div>
-
-            {/* Awards & Timeline */}
-            <div className="lg:col-span-5 bg-white p-8 md:p-12 border border-brand-secondary/15 rounded-sm shadow-sm space-y-12">
-              <div>
-                <h3 className="font-serif text-2xl font-light text-brand-dark mb-6">Recognitions & Awards</h3>
-                <ul className="space-y-4 font-sans text-xs tracking-wider text-brand-accent">
-                  <li className="flex justify-between border-b border-brand-secondary/10 pb-2">
-                    <span>ARCHDAILY DESIGN STUDIO NOMINEE</span>
-                    <span className="text-brand-primary">2025</span>
-                  </li>
-                  <li className="flex justify-between border-b border-brand-secondary/10 pb-2">
-                    <span>AD100 DECOR AWARD</span>
-                    <span className="text-brand-primary">2024</span>
-                  </li>
-                  <li className="flex justify-between border-b border-brand-secondary/10 pb-2">
-                    <span>RED DOT DESIGN CONCEPT WINNER</span>
-                    <span className="text-brand-primary">2023</span>
-                  </li>
-                  <li className="flex justify-between border-b border-brand-secondary/10 pb-2">
-                    <span>INTERNATIONAL PLANNERS CUP</span>
-                    <span className="text-brand-primary">2022</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-serif text-2xl font-light text-brand-dark mb-6">Our Milestones</h3>
-                <div className="relative pl-6 border-l border-brand-secondary/35 space-y-6">
-                  <div className="relative">
-                    <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 bg-brand-primary rounded-full" />
-                    <span className="font-serif text-sm font-semibold text-brand-primary">2012</span>
-                    <h5 className="font-serif text-base text-brand-dark mt-0.5">Studio Inception</h5>
-                    <p className="font-sans text-xs text-brand-accent mt-1">Founded in Stockholm, targeting boutique residential renovations.</p>
-                  </div>
-                  <div className="relative">
-                    <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 bg-brand-primary rounded-full" />
-                    <span className="font-serif text-sm font-semibold text-brand-primary">2018</span>
-                    <h5 className="font-serif text-base text-brand-dark mt-0.5">Architectural Expansion</h5>
-                    <p className="font-sans text-xs text-brand-accent mt-1">Incorporated full architectural licensing and commercial planning.</p>
-                  </div>
-                  <div className="relative">
-                    <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 bg-brand-primary rounded-full" />
-                    <span className="font-serif text-sm font-semibold text-brand-primary">2023</span>
-                    <h5 className="font-serif text-base text-brand-dark mt-0.5">Global Presence</h5>
-                    <p className="font-sans text-xs text-brand-accent mt-1">Opening studios in London and Los Angeles for international builds.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
@@ -375,7 +276,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="font-sans text-sm text-brand-accent max-w-md leading-relaxed">
-              Explore our curation of award-winning interior and architectural projects. Each design represents a bespoke journey of form, layout, and materiality.
+              Explore our portfolio and see how we can transform the most important areas of your home.
             </p>
           </div>
 
@@ -390,7 +291,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 md:py-32 bg-white">
+      <section id="services" className="py-20 md:py-32 bg-brand-bg">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
           {/* Header */}
@@ -401,9 +302,6 @@ export default function Home() {
             <h2 className="font-serif text-3xl sm:text-5xl font-light text-brand-dark">
               Our Core Services
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-brand-accent mt-4 leading-relaxed">
-              NovaNest provides a complete spectrum of design offerings, from spatial planning to luxury turnkey handovers.
-            </p>
           </div>
 
           {/* Grid */}
@@ -436,11 +334,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <Stats />
-
       {/* Why Choose Us Section */}
-      <section className="py-20 md:py-32 bg-brand-bg">
+      <section className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
           {/* Header */}
@@ -452,14 +347,14 @@ export default function Home() {
               Precision In Execution
             </h2>
             <p className="font-sans text-xs sm:text-sm text-brand-accent mt-4 leading-relaxed">
-              We operate under meticulous standards, making sure every corner represents premium craft and absolute accountability.
+              We operate under meticulous standards, making sure every corner represents premium craft and accountability.
             </p>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 md:py-32 bg-white relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-brand-bg relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
           
           <div className="flex justify-center mb-8">
@@ -483,9 +378,6 @@ export default function Home() {
                   <h4 className="font-sans text-xs tracking-widest uppercase font-semibold text-brand-primary">
                     {testimonials[activeTestimonial].name}
                   </h4>
-                  <span className="font-sans text-[10px] tracking-wider text-brand-accent uppercase mt-1 inline-block">
-                    Client &bull; {testimonials[activeTestimonial].project}
-                  </span>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -523,31 +415,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Service Areas */}
+      <section id="contact" className="py-20 md:py-32 bg-white border-b border-brand-secondary/15">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            {/* Info */}
+            <div className="lg:col-span-5 space-y-12">
+              <div className="space-y-4">
+                <p className="font-sans text-xs tracking-[0.3em] uppercase text-brand-primary font-semibold">
+                  Locations
+                </p>
+                <h2 className="font-serif text-4xl sm:text-5xl font-light text-brand-dark">
+                  Area of Service
+                </h2>
+                <p className="font-sans text-xs sm:text-sm text-brand-accent leading-relaxed max-w-sm">
+                  Serving the Western Massachusetts area.
+                </p>
+              </div>
+
+              <div className="space-y-8 font-sans text-xs sm:text-sm text-brand-dark">
+                
+                <div className="flex gap-4">
+                  <div className="p-3 bg-white border border-brand-secondary/15 text-brand-primary h-fit rounded-sm shadow-sm">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-brand-accent mt-1 leading-relaxed">
+                      Springfield, MA<br />
+                      West Springfield, MA<br />
+                      Chicopee, MA<br />
+                      Westfield, MA<br />
+                      Holyoke, MA<br />
+                      Agawam, MA<br />
+                      Ludlow, MA<br />
+                      And more<br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Service area map */}
+            <div className="lg:col-span-7 w-full aspect-[4/3] relative rounded-md overflow-hidden bg-brand-secondary/10 shadow-lg border border-brand-secondary/20">
+              <iframe
+                title="Hampden County, Massachusetts service area"
+                src="https://maps.google.com/maps?q=Hampden%20County%2C%20MA&hl=en&z=10&output=embed"
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Consultation Form Section */}
-      <section id="consultation" className="py-20 md:py-32 bg-brand-dark text-brand-bg">
+      <section id="consultation" className="py-20 md:py-32 bg-brand-bg text-brand-bg">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Context Left */}
             <div className="lg:col-span-5 space-y-6">
-              <p className="font-sans text-xs tracking-[0.3em] uppercase text-brand-secondary font-semibold">
-                Start Today
-              </p>
-              <h2 className="font-serif text-4xl sm:text-5xl font-light leading-tight">
-                Let&apos;s Curate Your Vision
+              <h2 className="font-serif text-4xl sm:text-5xl text-brand-dark leading-tight">
+                Contact Us
               </h2>
-              <p className="font-sans text-sm text-brand-bg/75 leading-relaxed">
-                Whether a comprehensive structural blueprint or custom room restorations, our designers are ready to translate your lifestyle guidelines into functional luxury.
+              <p className="font-sans text-sm text-brand-bg/75 text-brand-primary">
+                Schedule an appointment for a free estimate
               </p>
               
-              <div className="space-y-4 pt-4 border-t border-white/10 font-sans text-xs sm:text-sm">
+              <div className="space-y-4 pt-4 border-t text-brand-primary font-sans text-xs sm:text-sm">
                 <p className="flex items-center gap-3">
-                  <Star className="w-4 h-4 text-brand-secondary" />
-                  <span>Interactive walkthrough consultation included</span>
-                </p>
-                <p className="flex items-center gap-3">
-                  <Star className="w-4 h-4 text-brand-secondary" />
-                  <span>Itemized quotes and strict deadline delivery</span>
+                  <span><em>We typically respond within 1-2 business days</em></span>
                 </p>
               </div>
             </div>
@@ -601,56 +541,20 @@ export default function Home() {
                           name="phone"
                           value={formState.phone}
                           onChange={handleFormChange}
-                          placeholder="e.g. +1 555 1234"
+                          placeholder="e.g. +1 (413) 555-1234"
                           className="border-b border-brand-secondary/35 focus:border-brand-primary outline-none py-2 text-sm font-sans placeholder:text-brand-accent/40"
                         />
                       </div>
-                      <div className="flex flex-col space-y-2">
-                        <label htmlFor="projectType" className="font-sans text-[10px] tracking-widest uppercase font-semibold text-brand-accent">Project Type *</label>
-                        <select
-                          id="projectType"
-                          name="projectType"
-                          required
-                          value={formState.projectType}
-                          onChange={handleFormChange}
-                          className="border-b border-brand-secondary/35 focus:border-brand-primary outline-none py-2 text-sm font-sans text-brand-dark/80 bg-white"
-                        >
-                          <option value="">Select an option</option>
-                          <option value="Residential Design">Residential Design</option>
-                          <option value="Architectural Blueprinting">Architectural Blueprinting</option>
-                          <option value="Bespoke Furniture Joinery">Bespoke Furniture Joinery</option>
-                          <option value="Commercial Office Renovation">Commercial Office Renovation</option>
-                          <option value="Landscape Consultation">Landscape Consultation</option>
-                        </select>
-                      </div>
                     </div>
-
                     <div className="flex flex-col space-y-2">
-                      <label htmlFor="budget" className="font-sans text-[10px] tracking-widest uppercase font-semibold text-brand-accent">Estimated Budget</label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formState.budget}
-                        onChange={handleFormChange}
-                        className="border-b border-brand-secondary/35 focus:border-brand-primary outline-none py-2 text-sm font-sans text-brand-dark/80 bg-white"
-                      >
-                        <option value="">Select range</option>
-                        <option value="$10,000 - $30,000">$10,000 - $30,000</option>
-                        <option value="$30,000 - $80,000">$30,000 - $80,000</option>
-                        <option value="$80,000 - $150,000">$80,000 - $150,000</option>
-                        <option value="$150,000+">$150,000+</option>
-                      </select>
-                    </div>
-
-                    <div className="flex flex-col space-y-2">
-                      <label htmlFor="message" className="font-sans text-[10px] tracking-widest uppercase font-semibold text-brand-accent">Vision / Message</label>
+                      <label htmlFor="message" className="font-sans text-[10px] tracking-widest uppercase font-semibold text-brand-accent">Message</label>
                       <textarea
                         id="message"
                         name="message"
                         rows={4}
                         value={formState.message}
                         onChange={handleFormChange}
-                        placeholder="Briefly describe your dream space requirements..."
+                        placeholder="Briefly describe the scope of your project..."
                         className="border-b border-brand-secondary/35 focus:border-brand-primary outline-none py-2 text-sm font-sans placeholder:text-brand-accent/40 resize-none"
                       />
                     </div>
@@ -660,7 +564,7 @@ export default function Home() {
                       disabled={isSubmitting}
                       className="w-full inline-flex justify-center items-center gap-3 bg-brand-primary hover:bg-brand-dark text-white py-4 text-xs font-semibold tracking-widest uppercase transition-all duration-300 rounded-sm disabled:bg-brand-accent"
                     >
-                      {isSubmitting ? "Submitting Request..." : "Request Call-Back"}
+                      {isSubmitting ? "Submitting Request..." : "Submit"}
                       <Send className="w-3.5 h-3.5" />
                     </button>
                   </motion.form>
@@ -677,7 +581,7 @@ export default function Home() {
                     <div className="space-y-2">
                       <h3 className="font-serif text-3xl font-light text-brand-dark">Thank You</h3>
                       <p className="font-sans text-sm text-brand-accent leading-relaxed max-w-sm mx-auto">
-                        Your consultation ticket has been recorded. A senior project architect will contact you within 24 business hours.
+                        Your contact card has been submitted. We will contact you within 1-2 business days.
                       </p>
                     </div>
                     <button
@@ -695,245 +599,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-32 bg-brand-bg border-b border-brand-secondary/15">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            
-            {/* Info */}
-            <div className="lg:col-span-5 space-y-12">
-              <div className="space-y-4">
-                <p className="font-sans text-xs tracking-[0.3em] uppercase text-brand-primary font-semibold">
-                  Location
-                </p>
-                <h2 className="font-serif text-4xl sm:text-5xl font-light text-brand-dark">
-                  Visit Our Studio
-                </h2>
-                <p className="font-sans text-xs sm:text-sm text-brand-accent leading-relaxed max-w-sm">
-                  We look forward to hosting you for a material library walkthrough and sketching session.
-                </p>
-              </div>
-
-              <div className="space-y-8 font-sans text-xs sm:text-sm text-brand-dark">
-                
-                <div className="flex gap-4">
-                  <div className="p-3 bg-white border border-brand-secondary/15 text-brand-primary h-fit rounded-sm shadow-sm">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-base font-semibold uppercase tracking-wider text-brand-dark">Office Address</h4>
-                    <p className="text-brand-accent mt-1 leading-relaxed">
-                      1428 Nordic Avenue, Suite 400<br />
-                      Stockholm, SE 111 22
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="p-3 bg-white border border-brand-secondary/15 text-brand-primary h-fit rounded-sm shadow-sm">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-base font-semibold uppercase tracking-wider text-brand-dark">Phone Numbers</h4>
-                    <p className="text-brand-accent mt-1">
-                      Office: +46 (8) 123 4567<br />
-                      Hotline: +46 (8) 765 4321
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="p-3 bg-white border border-brand-secondary/15 text-brand-primary h-fit rounded-sm shadow-sm">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-base font-semibold uppercase tracking-wider text-brand-dark">Inquiries</h4>
-                    <p className="text-brand-accent mt-1">
-                      General: studio@novanest-interiors.com<br />
-                      Careers: build@novanest-interiors.com
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="p-3 bg-white border border-brand-secondary/15 text-brand-primary h-fit rounded-sm shadow-sm">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-base font-semibold uppercase tracking-wider text-brand-dark">Studio Hours</h4>
-                    <p className="text-brand-accent mt-1">
-                      Monday &ndash; Friday: 09:00 &ndash; 18:00<br />
-                      Saturday: By Prior Appointment Only
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Map Mockup */}
-            <div className="lg:col-span-7 w-full aspect-[4/3] relative rounded-md overflow-hidden bg-brand-secondary/10 shadow-lg border border-brand-secondary/20">
-              {/* Fallback to custom vector map overlay since standard iframe is slow and styling cannot be matched */}
-              <div className="absolute inset-0 z-10 flex flex-col justify-between p-8 text-brand-dark font-sans bg-brand-bg/40">
-                <div className="space-y-1.5">
-                  <span className="font-serif text-[10px] tracking-widest uppercase font-semibold text-brand-primary">Studio Location Map</span>
-                  <h4 className="font-serif text-2xl font-light">Stockholm HQ</h4>
-                </div>
-                <div className="flex justify-between items-end">
-                  <p className="text-[11px] text-brand-accent uppercase tracking-wider">
-                    Latitude: 59.3293&deg; N &bull; Longitude: 18.0686&deg; E
-                  </p>
-                  <a
-                    href="https://maps.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-brand-dark text-white px-5 py-2.5 text-[10px] font-semibold tracking-widest uppercase hover:bg-brand-primary transition-all duration-300 rounded-sm shadow-md"
-                  >
-                    Open Google Maps
-                    <ArrowRight className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Grid Background simulating drafting board/blueprint */}
-              <div 
-                className="absolute inset-0 w-full h-full opacity-60" 
-                style={{
-                  backgroundImage: `
-                    radial-gradient(circle, rgba(139, 94, 60, 0.1) 1px, transparent 1px),
-                    linear-gradient(to right, rgba(139, 94, 60, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(139, 94, 60, 0.05) 1px, transparent 1px)
-                  `,
-                  backgroundSize: "24px 24px, 12px 12px, 12px 12px"
-                }}
-              />
-              {/* Stylized vector map graphics */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-full h-full text-brand-secondary/20 fill-none stroke-brand-secondary/35 stroke-[1.5]" viewBox="0 0 400 300">
-                  {/* Roads / Paths */}
-                  <path d="M 0 50 L 400 200 M 0 100 Q 150 150 400 50 M 100 0 L 100 300 M 280 0 L 280 300" />
-                  {/* Island contour */}
-                  <path d="M 50 120 C 120 80, 280 180, 350 120 C 370 190, 310 280, 180 250 C 100 220, 30 180, 50 120 Z" fill="rgba(214, 194, 168, 0.15)" stroke="rgba(214, 194, 168, 0.4)" />
-                  {/* Pins */}
-                  <g transform="translate(180, 200)">
-                    <circle cx="0" cy="0" r="16" fill="rgba(139, 94, 60, 0.2)" />
-                    <circle cx="0" cy="0" r="6" fill="#8B5E3C" />
-                    <text x="12" y="4" className="font-serif text-[11px] font-bold fill-brand-dark stroke-none tracking-widest uppercase">NOVANEST HQ</text>
-                  </g>
-                </svg>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Section */}
-      <footer className="bg-brand-dark text-brand-bg py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-white/10">
-            
-            {/* Column 1 Logo */}
-            <div className="lg:col-span-4 space-y-6">
-              <a href="#" className="flex flex-col select-none">
-                <span className="font-serif text-3xl tracking-[0.15em] uppercase text-white font-medium">
-                  NovaNest
-                </span>
-                <span className="font-sans text-[8px] tracking-[0.3em] uppercase text-brand-secondary mt-1">
-                  Interiors & Architecture
-                </span>
-              </a>
-              <p className="font-sans text-xs text-brand-bg/60 leading-relaxed max-w-sm">
-                Creating luxury, quiet spaces that honor texture, scale, and function. A global studio serving residential and commercial projects.
-              </p>
-            </div>
-
-            {/* Column 2 Services */}
-            <div className="lg:col-span-2 space-y-4">
-              <h4 className="font-serif text-sm font-semibold uppercase tracking-widest text-white">Services</h4>
-              <ul className="space-y-2.5 font-sans text-xs text-brand-bg/50">
-                <li><a href="#services" className="hover:text-brand-secondary transition-colors duration-200">Interior Design</a></li>
-                <li><a href="#services" className="hover:text-brand-secondary transition-colors duration-200">Architecture</a></li>
-                <li><a href="#services" className="hover:text-brand-secondary transition-colors duration-200">Space Planning</a></li>
-                <li><a href="#services" className="hover:text-brand-secondary transition-colors duration-200">Furniture Customization</a></li>
-              </ul>
-            </div>
-
-            {/* Column 3 Projects */}
-            <div className="lg:col-span-2 space-y-4">
-              <h4 className="font-serif text-sm font-semibold uppercase tracking-widest text-white">Projects</h4>
-              <ul className="space-y-2.5 font-sans text-xs text-brand-bg/50">
-                <li><a href="#projects" className="hover:text-brand-secondary transition-colors duration-200">Luxury Villa</a></li>
-                <li><a href="#projects" className="hover:text-brand-secondary transition-colors duration-200">Stockholm Apartment</a></li>
-                <li><a href="#projects" className="hover:text-brand-secondary transition-colors duration-200">Corporate Offices</a></li>
-                <li><a href="#projects" className="hover:text-brand-secondary transition-colors duration-200">Milan Lobby</a></li>
-              </ul>
-            </div>
-
-            {/* Column 4 Newsletter */}
-            <div className="lg:col-span-4 space-y-4">
-              <h4 className="font-serif text-sm font-semibold uppercase tracking-widest text-white">Newsletter</h4>
-              <p className="font-sans text-xs text-brand-bg/60 leading-relaxed">
-                Subscribe to receive our seasonal journal covering design trends, material sourcing, and structural blueprints.
-              </p>
-              
-              <AnimatePresence mode="wait">
-                {!newsletterSubmitted ? (
-                  <motion.form 
-                    key="newsletter-form"
-                    onSubmit={handleNewsletterSubmit}
-                    className="flex border-b border-white/20 pb-1"
-                  >
-                    <input
-                      type="email"
-                      required
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                      placeholder="Your email address"
-                      className="bg-transparent border-none outline-none text-xs font-sans w-full py-2 placeholder:text-brand-bg/30 text-white"
-                    />
-                    <button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      className="text-brand-secondary hover:text-white px-2 py-2"
-                      aria-label="Subscribe"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </motion.form>
-                ) : (
-                  <motion.p
-                    key="newsletter-success"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.8 }}
-                    className="font-sans text-xs text-brand-secondary"
-                  >
-                    Thank you! You have joined our journal list.
-                  </motion.p>
-                )}
-              </AnimatePresence>
-            </div>
-
-          </div>
-
-          {/* Socials & Copyright */}
-          <div className="flex flex-col sm:flex-row items-center justify-between pt-8 mt-8 text-brand-bg/40 font-sans text-xs gap-4">
-            <p>&copy; {new Date().getFullYear()} NovaNest Studio. All Rights Reserved.</p>
-            
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-brand-secondary transition-colors">Instagram</a>
-              <a href="#" className="hover:text-brand-secondary transition-colors">Pinterest</a>
-              <a href="#" className="hover:text-brand-secondary transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-brand-secondary transition-colors">Twitter</a>
-            </div>
-          </div>
-
-        </div>
-      </footer>
-
       {/* Floating Buttons & Indicators */}
       <BackToTop />
-      <WhatsAppButton />
     </>
   );
 }

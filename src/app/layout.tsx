@@ -1,35 +1,36 @@
 import type { Metadata } from "next";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NovaNest Interiors | Luxury Interior Design & Architecture Studio",
-  description: "NovaNest Interiors is an award-winning luxury interior design and architecture studio. We create bespoke, inspiring residential and commercial spaces that redefine modern living.",
+  title: "Castle Carpenters",
+  description: "Carpentry, Remodeling, and Renovations.",
   keywords: [
-    "Interior Design",
-    "Architecture",
-    "Luxury Living",
+    "Carpentry",
+    "Remodeling",
+    "Renovation",
     "Home Renovation",
-    "Bespoke Furniture",
-    "Scandinavian Design",
-    "Space Planning",
-    "Turnkey Projects",
-    "Studio McGee Style",
-    "Kelly Wearstler Style"
+    "Home Repairs",
+    "Handyman",
+    "Service",
+    "Servicing",
+    "Massachusetts",
+    "Hampden County"
   ],
-  authors: [{ name: "NovaNest Studio" }],
-  creator: "NovaNest Studio",
+  authors: [{ name: "Roman Kotorobay" }],
+  creator: "Roman Kotorobay",
   metadataBase: new URL("https://www.castlecarpenters.us"),
   openGraph: {
-    title: "NovaNest Interiors | Luxury Interior Design & Architecture",
-    description: "Discover bespoke interior design and architectural projects that inspire everyday living.",
+    title: "Castle Carpenters",
+    description: "Carpentry, Remodeling, and Renovations.",
     url: "https://www.castlecarpenters.us",
-    siteName: "NovaNest Interiors",
+    siteName: "Castle Carpenters Inc",
     images: [
       {
         url: "/images/hero-bg.jpg",
         width: 1200,
         height: 630,
-        alt: "NovaNest Interiors - Luxury Living Room",
+        alt: "Castle Carpenters - Carpentry, Remodeling, and Renovations",
       },
     ],
     locale: "en_US",
@@ -37,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NovaNest Interiors | Luxury Interior Design & Architecture",
-    description: "Discover bespoke interior design and architectural projects that inspire everyday living.",
+    title: "Castle Carpenters - Carpentry, Remodeling, and Renovations",
+    description: "Castle Carpenters - Carpentry, Remodeling, and Renovations",
     images: ["/images/hero-bg.jpg"],
   },
   robots: {
@@ -75,6 +76,7 @@ export default function RootLayout({
         className="font-sans antialiased bg-brand-bg text-brand-dark min-h-screen flex flex-col"
       >
         {children}
+        <Footer />
       </body>
     </html>
   );

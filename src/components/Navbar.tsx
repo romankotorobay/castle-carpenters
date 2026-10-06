@@ -11,7 +11,6 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -27,10 +26,10 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex flex-col select-none">
             <span className="font-serif text-2xl tracking-[0.15em] uppercase text-brand-dark font-medium">
-              NovaNest
+              Castle Carpenters
             </span>
             <span className="font-sans text-[8px] tracking-[0.3em] uppercase text-brand-accent mt-0.5">
-              Interiors & Architecture
+              Carpentry & Remodeling
             </span>
           </a>
 
@@ -53,7 +52,7 @@ export default function Navbar() {
               href="#consultation"
               className="inline-flex items-center gap-2 bg-brand-dark text-white px-5 py-2.5 text-[10px] font-semibold tracking-widest uppercase hover:bg-brand-primary transition-all duration-300 rounded-sm"
             >
-              Book Consultation
+              Contact Us
               <ArrowRight className="w-3 h-3" />
             </a>
           </div>
@@ -94,7 +93,7 @@ export default function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full inline-flex justify-center items-center gap-2 bg-brand-dark text-white py-3 text-[10px] font-semibold tracking-widest uppercase hover:bg-brand-primary transition-colors"
                 >
-                  Book Consultation
+                  Contact Us
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>

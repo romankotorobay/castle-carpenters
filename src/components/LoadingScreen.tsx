@@ -37,7 +37,7 @@ export default function LoadingScreen() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="font-serif text-4xl md:text-6xl tracking-[0.2em] uppercase mb-4"
             >
-              NovaNest
+              Castle Carpenters
             </motion.h1>
             
             <motion.p
@@ -46,7 +46,7 @@ export default function LoadingScreen() {
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               className="font-sans text-xs md:text-sm tracking-[0.3em] uppercase mb-8"
             >
-              Interiors & Architecture
+              Carpentry, Remodeling & Renovations
             </motion.p>
 
             <div className="w-48 h-[2px] bg-brand-secondary/20 relative overflow-hidden rounded-full">
