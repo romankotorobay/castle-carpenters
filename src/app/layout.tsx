@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NovaNest Studio" }],
   creator: "NovaNest Studio",
-  metadataBase: new URL("https://novanest-interiors.com"),
+  metadataBase: new URL("https://www.castlecarpenters.us"),
   openGraph: {
     title: "NovaNest Interiors | Luxury Interior Design & Architecture",
     description: "Discover bespoke interior design and architectural projects that inspire everyday living.",
-    url: "https://novanest-interiors.com",
+    url: "https://www.castlecarpenters.us",
     siteName: "NovaNest Interiors",
     images: [
       {

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://novanest-interiors.com/sitemap.xml
+Sitemap: https://www.castlecarpenters.us/sitemap.xml

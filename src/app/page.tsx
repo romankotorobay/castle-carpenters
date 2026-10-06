@@ -27,8 +27,6 @@ import {
 import Navbar from "@/components/Navbar";
 import LoadingScreen from "@/components/LoadingScreen";
 import Stats from "@/components/Stats";
-import ProcessTimeline from "@/components/ProcessTimeline";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import ProjectCard, { Project } from "@/components/ProjectCard";
 import BackToTop from "@/components/BackToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -36,46 +34,22 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 // Projects Data
 const projects: Project[] = [
   {
-    title: "Luxury Villa",
-    image: "/images/project-villa.jpg",
-    location: "Beverly Hills, CA",
-    area: "5,400 SQ FT",
-    year: "2025",
+    image: "/images/filler.jpeg"
   },
   {
-    title: "Modern Apartment",
-    image: "/images/project-apartment.jpg",
-    location: "Stockholm, SE",
-    area: "1,800 SQ FT",
-    year: "2024",
+    image: "/images/filler.jpeg"
   },
   {
-    title: "Corporate Office",
-    image: "/images/project-office.jpg",
-    location: "London, UK",
-    area: "12,500 SQ FT",
-    year: "2024",
+    image: "/images/filler.jpeg",
   },
   {
-    title: "Hotel Lobby",
-    image: "/images/project-lobby.jpg",
-    location: "Milan, IT",
-    area: "8,200 SQ FT",
-    year: "2025",
+    image: "/images/filler.jpeg",
   },
   {
-    title: "Cafe Interior",
-    image: "/images/project-cafe.jpg",
-    location: "Copenhagen, DK",
-    area: "1,200 SQ FT",
-    year: "2023",
+    image: "/images/filler.jpeg",
   },
   {
-    title: "Restaurant Design",
-    image: "/images/project-restaurant.jpg",
-    location: "Paris, FR",
-    area: "3,500 SQ FT",
-    year: "2024",
+    image: "/images/filler.jpeg",
   },
 ];
 
@@ -120,62 +94,6 @@ const services = [
     icon: CheckCircle2,
     title: "Turnkey Projects",
     description: "Full end-to-end design, construction coordination, and final staging handover."
-  }
-];
-
-// Why Choose Us Data
-const advantages = [
-  {
-    title: "Award Winning Studio",
-    description: "Global recognition in multiple design forums for aesthetic merit and creative planning."
-  },
-  {
-    title: "Experienced Team",
-    description: "Dedicated crew of registered architects, master structural detailers, and project managers."
-  },
-  {
-    title: "Premium Raw Materials",
-    description: "Exclusive partnerships with European stone quarries, timber mills, and textile houses."
-  },
-  {
-    title: "Transparent Pricing",
-    description: "Detailed, cost-itemized budgeting with no hidden overheads or surprise commissions."
-  },
-  {
-    title: "Custom Tailored Designs",
-    description: "Zero templates. Every outline, profile, and finish is sketched uniquely for you."
-  },
-  {
-    title: "Timely Delivery Guarantee",
-    description: "Rigorous milestone scheduling and agile coordination ensuring prompt completions."
-  }
-];
-
-// Team Data
-const team = [
-  {
-    name: "Eleanor Vance",
-    role: "Lead Interior Designer",
-    experience: "12 Years Experience",
-    specialization: "Residential Estates",
-    awards: "AD100 Designer, Best Residential Space 2024",
-    image: "/images/designer-1.jpg"
-  },
-  {
-    name: "Marcus Thorne",
-    role: "Principal Architect",
-    experience: "15 Years Experience",
-    specialization: "Sustainable Structures",
-    awards: "Pritzker Nominee, Green Design Award 2023",
-    image: "/images/designer-2.jpg"
-  },
-  {
-    name: "Sophia Lin",
-    role: "Senior Furniture Designer",
-    experience: "8 Years Experience",
-    specialization: "Custom Joinery & Seating",
-    awards: "Red Dot Design Winner, IF Design Award",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
   }
 ];
 
@@ -294,7 +212,7 @@ export default function Home() {
             className="w-full h-full relative"
           >
             <Image 
-              src="/images/hero-bg.jpg" 
+              src="/images/filler.jpeg" 
               alt="NovaNest Luxury Living Room" 
               fill
               priority
@@ -343,45 +261,6 @@ export default function Home() {
                 Book Consultation
               </a>
             </motion.div>
-          </div>
-        </div>
-
-        {/* Animated Floating Design Cards */}
-        <div className="hidden lg:block absolute right-12 top-1/3 z-20 space-y-6 max-w-xs">
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-sm shadow-xl text-brand-bg"
-          >
-            <span className="font-serif text-xs text-brand-secondary uppercase tracking-widest block mb-1">01 / Aesthetic</span>
-            <h4 className="font-serif text-lg font-light">Luminous Textures</h4>
-            <p className="font-sans text-[11px] text-brand-bg/70 leading-relaxed mt-2">Bespoke integrations of organic linen, boucle fabrics, and warm white plaster.</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-sm shadow-xl text-brand-bg translate-x-6"
-          >
-            <span className="font-serif text-xs text-brand-secondary uppercase tracking-widest block mb-1">02 / Architecture</span>
-            <h4 className="font-serif text-lg font-light">Minimalist Alignment</h4>
-            <p className="font-sans text-[11px] text-brand-bg/70 leading-relaxed mt-2">Clean horizontal geometry, double height glazing, and fluid circulation paths.</p>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-          <span className="font-sans text-[9px] tracking-[0.25em] uppercase text-brand-bg/60 mb-2">Scroll Down</span>
-          <div className="w-[1px] h-8 bg-brand-bg/30 relative overflow-hidden">
-            <motion.div 
-              animate={{ y: ["-100%", "100%"] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-              className="absolute top-0 left-0 w-full h-1/2 bg-brand-secondary"
-            />
           </div>
         </div>
       </section>
@@ -503,28 +382,10 @@ export default function Home() {
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16">
             {projects.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
+              <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
 
-        </div>
-      </section>
-
-      {/* Before / After Section */}
-      <section className="py-20 md:py-32 bg-brand-bg border-y border-brand-secondary/15">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <p className="font-sans text-xs tracking-[0.3em] uppercase text-brand-primary font-semibold mb-3">
-              Spatial Transformations
-            </p>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-brand-dark">
-              Restoration & Renovation
-            </h2>
-            <p className="font-sans text-xs sm:text-sm text-brand-accent mt-4 leading-relaxed">
-              Drag the interactive slider to view the drastic change between our client&apos;s initial 1980s layout and the final tailored lounge design.
-            </p>
-          </div>
-          <BeforeAfterSlider />
         </div>
       </section>
 
@@ -594,102 +455,6 @@ export default function Home() {
               We operate under meticulous standards, making sure every corner represents premium craft and absolute accountability.
             </p>
           </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {advantages.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-white p-8 border border-brand-secondary/15 rounded-sm shadow-sm flex flex-col space-y-3"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
-                  <h4 className="font-serif text-lg font-light text-brand-dark">
-                    {item.title}
-                  </h4>
-                </div>
-                <p className="font-sans text-xs sm:text-sm text-brand-accent leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* Timeline Process Section */}
-      <section id="process" className="bg-white">
-        <ProcessTimeline />
-      </section>
-
-      {/* Designers / Team Section */}
-      <section id="team" className="py-20 md:py-32 bg-brand-bg">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
-          {/* Header */}
-          <div className="text-center max-w-xl mx-auto mb-20">
-            <p className="font-sans text-xs tracking-[0.3em] uppercase text-brand-primary font-semibold mb-3">
-              Creative Minds
-            </p>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-brand-dark">
-              Meet The Artisans
-            </h2>
-            <p className="font-sans text-xs sm:text-sm text-brand-accent mt-4 leading-relaxed">
-              Meet the licensed architects, spatial designers, and coordinators behind our award-winning projects.
-            </p>
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.1 }}
-                className="bg-white border border-brand-secondary/15 rounded-sm overflow-hidden shadow-sm flex flex-col group"
-              >
-                {/* Image */}
-                <div className="relative aspect-square w-full overflow-hidden bg-brand-secondary/15">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
-                {/* Details */}
-                <div className="p-8 flex flex-col flex-grow justify-between">
-                  <div className="space-y-2">
-                    <p className="font-sans text-[10px] tracking-widest uppercase text-brand-primary font-semibold">
-                      {member.role}
-                    </p>
-                    <h3 className="font-serif text-2xl font-light text-brand-dark">
-                      {member.name}
-                    </h3>
-                    <p className="font-sans text-xs text-brand-accent mt-3 leading-relaxed">
-                      {member.experience} &bull; {member.specialization}
-                    </p>
-                  </div>
-                  <div className="border-t border-brand-secondary/15 mt-6 pt-4">
-                    <p className="font-sans text-[10px] uppercase tracking-wider text-brand-accent font-medium leading-relaxed">
-                      <strong>Awards:</strong> {member.awards}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
         </div>
       </section>
 

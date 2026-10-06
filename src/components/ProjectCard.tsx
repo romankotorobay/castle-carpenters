@@ -5,11 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 export interface Project {
-  title: string;
   image: string;
-  location: string;
-  area: string;
-  year: string;
 }
 
 interface ProjectCardProps {
@@ -30,7 +26,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-secondary/10 rounded-sm shadow-sm">
         <Image
           src={project.image}
-          alt={project.title}
+          alt={"Project Image"}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -48,17 +44,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="flex flex-col space-y-2">
         <div className="flex justify-between items-baseline">
           <h3 className="font-serif text-xl sm:text-2xl font-light text-brand-dark group-hover:text-brand-primary transition-colors duration-300">
-            {project.title}
+            {"Project Image"}
           </h3>
-          <span className="font-sans text-[10px] tracking-widest text-brand-accent uppercase">
-            {project.year}
-          </span>
         </div>
         
         <div className="flex items-center space-x-4 border-t border-brand-secondary/15 pt-2 text-[11px] sm:text-xs tracking-wider text-brand-accent font-medium uppercase font-sans">
-          <span>{project.location}</span>
-          <span className="w-1.5 h-1.5 bg-brand-secondary rounded-full" />
-          <span>{project.area}</span>
         </div>
       </div>
     </motion.div>
