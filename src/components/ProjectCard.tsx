@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export interface Project {
   image: string;
+  tag: string;
 }
 
 interface ProjectCardProps {
@@ -26,7 +27,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-secondary/10 rounded-sm shadow-sm">
         <Image
           src={project.image}
-          alt={"Project Image"}
+          alt={project.tag}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -44,7 +45,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="flex flex-col space-y-2">
         <div className="flex justify-between items-baseline">
           <h3 className="font-serif text-xl sm:text-2xl font-light text-brand-dark group-hover:text-brand-primary transition-colors duration-300">
-            {"Project Image"}
+            {project.tag}
           </h3>
         </div>
         

@@ -32,22 +32,16 @@ import BackToTop from "@/components/BackToTop";
 // Projects Data
 const projects: Project[] = [
   {
-    image: "/images/filler.jpeg"
+    image: "/images/custom-shed-door.png",
+    tag: "Custom Shed Door"
   },
   {
-    image: "/images/filler.jpeg"
+    image: "/images/door-renovation.png",
+    tag: "Door Renovation"
   },
   {
-    image: "/images/filler.jpeg",
-  },
-  {
-    image: "/images/filler.jpeg",
-  },
-  {
-    image: "/images/filler.jpeg",
-  },
-  {
-    image: "/images/filler.jpeg",
+    image: "/images/stairwell-renovation.png",
+    tag: "Stairwell Renovation"
   },
 ];
 
@@ -214,7 +208,7 @@ export default function Home() {
               className="font-serif text-4xl sm:text-6xl md:text-7xl font-light leading-[1.1] mb-8"
             >
               {/*change this */}
-              Design Spaces That Inspire Everyday Living
+              Fortify Your Home
             </motion.h1>
             
             <motion.div
@@ -253,14 +247,14 @@ export default function Home() {
                   About Castle Carpenters
                 </p>
                 <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-light leading-tight text-brand-dark">
-                  Carpentry & Remodeling Services - Fortify Your Home
+                  Our Mission
                 </h2>
               </div>
 
               <div className="space-y-6 text-brand-accent font-sans text-sm md:text-base leading-relaxed max-w-2xl">
                 <p>
                   Your home is your kingdom, don't let it fall into ruin. Small problems can quickly add up to expensive repairs if they aren't addressed. 
-                  Allow us to service your home to save you from those costly repairs down the line. We offer top to bottom service and maintenance...
+                  Allow us to service your home to save you from those costly repairs down the line. We offer top to bottom service and maintenance.
                 </p>
                 <p>
                   Serving the Western Massachusetts area, Castle Carpenters takes pride in providing high quality results.
@@ -368,7 +362,7 @@ export default function Home() {
               Precision In Execution
             </h2>
             <p className="font-sans text-xs sm:text-sm text-brand-accent mt-4 leading-relaxed">
-              We operate under meticulous standards, making sure every corner represents premium craft and accountability.
+              Our attention to detail and pride in our craftsmanship will leave you confident that your home is in good hands.
             </p>
           </div>
         </div>
