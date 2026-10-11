@@ -6,25 +6,18 @@ import { useScroll, useTransform, motion, AnimatePresence } from "framer-motion"
 import { 
   ArrowRight, 
   MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Star, 
-  Award, 
   Layers, 
-  Compass, 
-  Maximize, 
   Sparkles, 
   CheckCircle2, 
   Quote, 
   Send, 
   ChevronLeft,
   ChevronRight,
-  Eye,
   Hammer
 } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
+import TurnstileField, { TurnstileFieldHandle } from "@/components/TurnstileField";
 import LoadingScreen from "@/components/LoadingScreen";
 import ProjectCard, { Project } from "@/components/ProjectCard";
 import BackToTop from "@/components/BackToTop";
@@ -100,6 +93,8 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileFieldHandle>(null);
 
   // Parallax Hero Effect
   const { scrollY } = useScroll();
@@ -117,6 +112,11 @@ export default function Home() {
     e.preventDefault();
     if (!formState.name || !formState.email) return;
 
+    if (!turnstileToken) {
+      setSubmitError("Please complete the security check and try again.");
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError("");
 
@@ -124,7 +124,7 @@ export default function Home() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formState),
+        body: JSON.stringify({ ...formState, turnstileToken }),
       });
       const data = (await response.json().catch(() => null)) as { error?: string } | null;
 
@@ -133,6 +133,7 @@ export default function Home() {
       }
 
       setIsSubmitted(true);
+      setTurnstileToken("");
       setFormState({
         name: "",
         email: "",
@@ -140,6 +141,7 @@ export default function Home() {
         message: ""
       });
     } catch (error) {
+      turnstileRef.current?.reset();
       setSubmitError(
         error instanceof Error
           ? error.message
@@ -253,7 +255,7 @@ export default function Home() {
 
               <div className="space-y-6 text-brand-accent font-sans text-sm md:text-base leading-relaxed max-w-2xl">
                 <p>
-                  Your home is your kingdom, don't let it fall into ruin. Small problems can quickly add up to expensive repairs if they aren't addressed. 
+                  Your home is your kingdom, don&apos;t let it fall into ruin. Small problems can quickly add up to expensive repairs if they aren&apos;t addressed. 
                   Allow us to service your home to save you from those costly repairs down the line. We offer top to bottom service and maintenance.
                 </p>
                 <p>
@@ -574,6 +576,8 @@ export default function Home() {
                       />
                     </div>
 
+                    <TurnstileField ref={turnstileRef} onToken={setTurnstileToken} />
+
                     {submitError ? (
                       <p role="alert" className="font-sans text-sm text-brand-primary">
                         {submitError}
@@ -582,7 +586,7 @@ export default function Home() {
 
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || !turnstileToken}
                       className="w-full inline-flex justify-center items-center gap-3 bg-brand-primary hover:bg-brand-dark text-white py-4 text-xs font-semibold tracking-widest uppercase transition-all duration-300 rounded-sm disabled:bg-brand-accent"
                     >
                       {isSubmitting ? "Submitting Request..." : "Submit"}

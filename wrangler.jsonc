@@ -23,5 +23,9 @@
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
-	}
+	},
+	"routes": [
+		{ "pattern": "castlecarpenters.us", "custom_domain": true },
+		{ "pattern": "www.castlecarpenters.us", "custom_domain": true }
+	]
 }
